@@ -1,1 +1,9 @@
 <p>get-json-data works!</p>
+
+<button (click)="getData()">Fetch Data</button>
+
+<div *ngFor="let book of data" style="text-align:center">
+ <h3>
+   {{ book.title }}
+ </h3>
+</div>

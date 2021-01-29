@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-get-json-data',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GetJsonDataComponent implements OnInit {
 
-  constructor() { }
+  data: any = [];
+
+  constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
+    this.dataService.sendGetRequest().subscribe((data)=>{
+      console.log(data);
+      this.data = data;
+    })
+  }
+
+  getData() {
+    this.dataService.sendGetRequest().subscribe((data)=>{
+      console.log(data);
+      this.data = data;
+    })
   }
 
 }
