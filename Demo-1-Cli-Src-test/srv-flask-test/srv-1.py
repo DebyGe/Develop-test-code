@@ -1,9 +1,11 @@
 import flask
 from flask import request, jsonify
-from flask_cors import CORS
+from flask_cors import CORS, cross_origin
 
 app = flask.Flask(__name__)
-CORS(app)
+#cors = CORS(app, resources={"*": {"origins": "*"}})
+CORS(app, resources=r'*', headers='Content-Type')
+
 app.config["DEBUG"] = True
 
 # Create some test data for our catalog in the form of a list of dictionaries.
@@ -35,6 +37,25 @@ def home():
 # A route to return all of the available entries in our catalog.
 @app.route('/api/v1/resources/books/all', methods=['GET'])
 def api_all():
+    return jsonify(books)
+
+# GET requests will be blocked
+#{
+#    "in1" : "Italia",
+#    "in2" : "Iblea"
+#}
+
+@app.route('/json-request', methods=['POST'])
+def json_example():
+    request_data = request.get_json()
+    in1 = request_data['in1']
+    in2 = request_data['in2']
+    books = [
+        {
+            "in1" : in1,
+            "in2" : in2
+        }
+    ]
     return jsonify(books)
 
 app.run()

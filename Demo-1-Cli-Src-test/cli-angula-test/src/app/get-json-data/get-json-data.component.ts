@@ -9,6 +9,7 @@ import { DataService } from '../data.service';
 export class GetJsonDataComponent implements OnInit {
 
   data: any = [];
+  dataRet: any = [];
 
   constructor(private dataService: DataService) { }
 
@@ -23,6 +24,13 @@ export class GetJsonDataComponent implements OnInit {
     this.dataService.sendGetRequest().subscribe((data)=>{
       console.log(data);
       this.data = data;
+    })
+  }
+
+  sendData() {
+    this.dataService.sendPostRequest().subscribe((data)=>{
+      console.log(data);
+      this.dataRet = data;
     })
   }
 
