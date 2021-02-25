@@ -16,6 +16,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatInputModule } from '@angular/material/input'; 
+import { MatSelectModule } from '@angular/material/select';
 import { CMSEditorComponent } from './cmseditor/cmseditor.component';
 
 @NgModule({
@@ -35,6 +36,7 @@ import { CMSEditorComponent } from './cmseditor/cmseditor.component';
     MatCardModule,
     MatButtonModule,
     MatInputModule,
+    MatSelectModule,
     MatProgressSpinnerModule
   ],
   providers: [],

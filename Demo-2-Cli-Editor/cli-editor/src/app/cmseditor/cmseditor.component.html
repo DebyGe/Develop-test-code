@@ -4,6 +4,26 @@
   <input matInput type="text" [(ngModel)]="contentdata.Name">
 </mat-form-field>
 
+<br>
+
+<mat-form-field appearance="fill">
+    <mat-label>Culture</mat-label>
+    <mat-select [(ngModel)]="selectedValue" name="culture">
+      <mat-option *ngFor="let culture of cultures" [value]="culture.value">
+        {{culture.viewValue}}
+      </mat-option>
+    </mat-select>
+</mat-form-field>
+
+<mat-form-field appearance="fill">
+    <mat-label>Content Type</mat-label>
+    <mat-select [(ngModel)]="selectedValue" name="contentType">
+      <mat-option *ngFor="let contentType of contentTypes" [value]="contentType.value">
+        {{contentType.viewValue}}
+      </mat-option>
+    </mat-select>
+</mat-form-field>
+
 <ckeditor [editor]="Editor" (ready)="onReady($event)" [(ngModel)]="contentdata.Content" ></ckeditor>
 
-<button (click)="onSaveEditorData()">Save</button>
+<button mat-flat-button color="primary" (click)="onSaveEditorData()">Save</button>
