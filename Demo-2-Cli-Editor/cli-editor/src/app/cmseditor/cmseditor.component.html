@@ -1,4 +1,1 @@
-
-
-<ckeditor [config]="editorConfig" [editor]="Editor" data="<p>hello world</p>"></ckeditor>
-
+<ckeditor [editor]="Editor"  (ready)="onReady($event)"></ckeditor>
