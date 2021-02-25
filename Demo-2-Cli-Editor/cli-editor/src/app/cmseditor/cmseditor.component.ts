@@ -11,11 +11,8 @@ import { Content } from "../content";
 export class CMSEditorComponent implements OnInit {
 
   public Editor = DecoupledEditor;  
-  public Inputvalue = 'test';
-
+  
   contentdata = new Content();
-
-  inEditor : any;
 
   public onReady( editor ) {
         editor.ui.getEditableElement().parentElement.insertBefore(
@@ -24,17 +21,20 @@ export class CMSEditorComponent implements OnInit {
         );
 
         editor.setData( '<p><b>This is editor!</b></p>' );    
-        this.inEditor = editor; 
   }
 
   public onSaveEditorData() {
-    this.inEditor.setData(this.Inputvalue);
+    console.log(this.contentdata.Name);  
+    console.log(this.contentdata.Content);  
+    //test this.contentdata.Content = this.contentdata.Name;
   }
 
-  constructor() { }
+  constructor() { 
 
-  ngOnInit(): void {
-   
+  }
+
+  ngOnInit(): void { 
+
   }
 
 }

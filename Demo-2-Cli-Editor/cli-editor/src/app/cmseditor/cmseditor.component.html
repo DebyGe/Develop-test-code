@@ -1,9 +1,9 @@
 
 <mat-form-field class="input-form-field">
   <mat-label>Clearable input</mat-label>
-  <input matInput type="text" [value]="Inputvalue">
+  <input matInput type="text" [(ngModel)]="contentdata.Name">
 </mat-form-field>
 
-<ckeditor [editor]="Editor" (ready)="onReady($event)"></ckeditor>
+<ckeditor [editor]="Editor" (ready)="onReady($event)" [(ngModel)]="contentdata.Content" ></ckeditor>
 
 <button (click)="onSaveEditorData()">Save</button>
