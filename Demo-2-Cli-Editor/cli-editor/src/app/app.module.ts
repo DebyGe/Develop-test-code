@@ -13,6 +13,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatInputModule } from '@angular/material/input'; 
 import { CMSEditorComponent } from './cmseditor/cmseditor.component';
 
 @NgModule({
@@ -30,6 +31,7 @@ import { CMSEditorComponent } from './cmseditor/cmseditor.component';
     MatIconModule,
     MatCardModule,
     MatButtonModule,
+    MatInputModule,
     MatProgressSpinnerModule
   ],
   providers: [],

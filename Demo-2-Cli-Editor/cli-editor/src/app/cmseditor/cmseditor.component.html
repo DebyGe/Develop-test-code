@@ -1,1 +1,9 @@
-<ckeditor [editor]="Editor"  (ready)="onReady($event)"></ckeditor>
+
+<mat-form-field class="input-form-field">
+  <mat-label>Clearable input</mat-label>
+  <input matInput type="text" [value]="Inputvalue">
+</mat-form-field>
+
+<ckeditor [editor]="Editor" (ready)="onReady($event)"></ckeditor>
+
+<button (click)="onSaveEditorData()">Save</button>

@@ -2,3 +2,7 @@
     min-height: 500px !important;
     min-width: 300px;
 }
+
+.input-form-field {
+  width: 200px;
+}
