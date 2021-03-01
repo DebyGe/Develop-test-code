@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as DecoupledEditor from '@ckeditor/ckeditor5-build-decoupled-document';
 import { Content } from "../content";
-
+import { DataCmsEditorService } from '../data-cms-editor.service';
 interface Culture {
   value: string;
   viewValue: string;
