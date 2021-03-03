@@ -18,4 +18,16 @@ export class DataCmsEditorService {
     const body = { 'in1' : 'client', 'in2': 'angula' };
     return this.httpClient.post<any>(this.REST_API_JSON_REQUEST, body);
   }
+
+  public getLinguage() {
+  	// http://www.lingoes.net/en/translator/langcode.htm
+  	const linguage = 
+  	[
+  		{'value': 'it-IT', 'viewValue': 'IT'}, 
+  		{'value': 'en-GB', 'viewValue': 'EG'},
+  		{'value': 'fn-FN', 'viewValue': 'FN'}
+  	];
+
+  	return linguage;
+  }
 }
