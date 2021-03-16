@@ -26,6 +26,11 @@ export class CMSEditorComponent implements OnInit {
   contentTypes: ContentType[] = [];
   dataLinguageRet: any = [];
 
+  private editorFocusOutModel : any;
+  private txtSelection : String = '';
+  private txtTranslate : String = '';
+  private errorMessage : String = '';
+
   public onReady( editor ) {
         editor.ui.getEditableElement().parentElement.insertBefore(
             editor.ui.view.toolbar.element,
@@ -42,12 +47,68 @@ export class CMSEditorComponent implements OnInit {
         this.contentTypes.push({value: 3, viewValue: 'Other'})    
   }
 
+  public ckEditorFocusOut(event) {
+    this.editorFocusOutModel = event.editor.model;
+
+    /*
+    var selection = event.editor.model.document.selection;
+    const range = selection.getFirstRange();
+    for (const item of range.getItems()) {
+      this.txtSelection += item.data;
+    }*/  
+
+     /*
+    const insertPosition = selection.getFirstPosition();
+    event.editor.model.change( writer => {
+      writer.insertText( 'foo', insertPosition, 'end' );
+    } );
+    */
+    /*
+    const insertPosition = selection.getFirstPosition();
+    event.editor.model.change( writer => {
+      writer.remove( range );
+      writer.insertText( 'foo', insertPosition);
+    });
+    */
+}
+
+
+  public onTextTranslate() {
+
+    var selection = this.editorFocusOutModel.document.selection;
+    const range = selection.getFirstRange();
+    this.txtSelection = '';
+    for (const item of range.getItems()) {
+      this.txtSelection += item.data;
+    }    
+
+    this.dataCmsEditorService.getGTextTranslate('auto', this.contentdata.Culture, this.txtSelection).subscribe(
+        (response) => {                           //next() callback
+          console.log('** response received ** ');
+          this.txtTranslate = response[0][0][0];
+        },
+        (error) => {                              //error() callback
+          console.error('Request failed with error');
+          this.errorMessage = error;
+        },
+        () => {                                   //complete() callback
+
+          const insertPosition = selection.getFirstPosition();
+            this.editorFocusOutModel.change( writer => {
+            writer.remove( range );
+            writer.insertText( this.txtTranslate , insertPosition);
+          });
+
+          //console.log(this.txtTranslate);
+          //console.error('Request completed');      //This is actually not needed 
+        })
+  }
+
   public onSaveEditorData() {
     console.log(this.contentdata.Name);  
     console.log(this.contentdata.Culture);  
     console.log(this.contentdata.ContentType);  
     console.log(this.contentdata.Content);  
-
   }
 
   constructor(private dataCmsEditorService: DataCmsEditorService) { 

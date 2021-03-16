@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
+
 export class DataCmsEditorService {
   private REST_API_SERVER = "http://localhost:5000/api/v1/resources/books/all";
   private REST_API_JSON_REQUEST =  "http://localhost:5000/json-request";
@@ -21,13 +22,22 @@ export class DataCmsEditorService {
 
   public getLinguage() {
   	// http://www.lingoes.net/en/translator/langcode.htm
-  	const linguage = 
+    const linguage = 
   	[
-  		{'value': 'it-IT', 'viewValue': 'IT'}, 
-  		{'value': 'en-GB', 'viewValue': 'EG'},
-  		{'value': 'fn-FN', 'viewValue': 'FN'}
+  		{'value': 'it', 'viewValue': 'IT'}, 
+  		{'value': 'eg', 'viewValue': 'EG'},
+  		{'value': 'fr', 'viewValue': 'FN'}
   	];
 
   	return linguage;
   }
+
+  public getGTextTranslate(sourceLang, targetLang, sourceText) {
+    // https://cloud.google.com/translate/docs/languages
+    var url = "https://translate.googleapis.com/translate_a/single?client=gtx&sl=" 
+              + sourceLang + "&tl=" + targetLang + "&dt=t&q=" + encodeURI(sourceText);
+
+    return this.httpClient.get(url);
+  }
+
 }

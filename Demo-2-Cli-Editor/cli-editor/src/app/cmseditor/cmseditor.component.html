@@ -24,6 +24,8 @@
     </mat-select>
 </mat-form-field>
 
-<ckeditor [editor]="Editor" (ready)="onReady($event)" [(ngModel)]="contentdata.Content" ></ckeditor>
+<ckeditor [editor]="Editor" (ready)="onReady($event)" (blur)="ckEditorFocusOut($event)" [(ngModel)]="contentdata.Content" ></ckeditor>
+
+<button mat-flat-button color="primary" (click)="onTextTranslate()">Text translate</button>
 
 <button mat-flat-button color="primary" (click)="onSaveEditorData()">Save</button>
