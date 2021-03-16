@@ -76,6 +76,8 @@ export class CMSEditorComponent implements OnInit {
   public onTextTranslate() {
 
     var selection = this.editorFocusOutModel.document.selection;
+    var att = selection.getAttributes();
+    
     const range = selection.getFirstRange();
     this.txtSelection = '';
     for (const item of range.getItems()) {
@@ -96,7 +98,7 @@ export class CMSEditorComponent implements OnInit {
           const insertPosition = selection.getFirstPosition();
             this.editorFocusOutModel.change( writer => {
             writer.remove( range );
-            writer.insertText( this.txtTranslate , insertPosition);
+            writer.insertText( this.txtTranslate, att , insertPosition);
           });
 
           //console.log(this.txtTranslate);
