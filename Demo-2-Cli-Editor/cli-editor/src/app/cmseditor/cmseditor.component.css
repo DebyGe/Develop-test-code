@@ -6,3 +6,7 @@
 .input-form-field {
   width: 200px;
 }
+
+.mat-flat-button {
+	margin:2px;   
+}
