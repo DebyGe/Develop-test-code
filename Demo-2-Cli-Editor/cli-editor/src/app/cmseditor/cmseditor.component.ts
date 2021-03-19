@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import * as DecoupledEditor from '@ckeditor/ckeditor5-build-decoupled-document';
 import { Content } from "../content";
 import { DataCmsEditorService } from '../data-cms-editor.service';
+
 interface Culture {
   value: string;
   viewValue: string;
@@ -32,10 +33,21 @@ export class CMSEditorComponent implements OnInit {
   private errorMessage : String = '';
 
   public onReady( editor ) {
+      
+        // Show possible element in toolbar
+        // console.log(Array.from( editor.ui.componentFactory.names() ));
+
         editor.ui.getEditableElement().parentElement.insertBefore(
             editor.ui.view.toolbar.element,
             editor.ui.getEditableElement()
         );
+        
+        this.Editor.editorConfig = function( config ) {
+          config.toolbarGroups = [
+            { name: 'document', groups: [ 'mode', 'document', 'doctools' ] },
+            { name: 'clipboard', groups: [ 'clipboard', 'undo' ] }
+          ];
+        };
 
         editor.setData( '<p><b>This is editor!</b></p>' );
 

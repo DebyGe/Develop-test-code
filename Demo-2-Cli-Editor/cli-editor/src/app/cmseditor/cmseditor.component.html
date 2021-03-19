@@ -24,7 +24,21 @@
     </mat-select>
 </mat-form-field>
 
-<ckeditor [editor]="Editor" (ready)="onReady($event)" (blur)="ckEditorFocusOut($event)" [(ngModel)]="contentdata.Content" ></ckeditor>
+<ckeditor [editor]="Editor" (ready)="onReady($event)" 
+[config]="{ toolbar: [ 'heading', '|',
+        'fontfamily', 'fontsize', '|',
+        'alignment', '|',
+        'fontColor', 'fontBackgroundColor', '|',
+        'bold', 'italic', 'strikethrough', 'underline', '|',
+        'link', '|',
+        'outdent', 'indent', '|',
+        'bulletedList', 'numberedList', '|',
+        'insertTable', '|', 'imageUpload', 'imageStyle:full','imageStyle:alignLeft', 'imageStyle:alignRight' ,'|',
+        'undo', 'redo' ] }"
+
+(blur)="ckEditorFocusOut($event)" [(ngModel)]="contentdata.Content" >
+  
+</ckeditor>
 
 <button mat-flat-button color="primary" (click)="onTextTranslate()">Text translate</button>
 
