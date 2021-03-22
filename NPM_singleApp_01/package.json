@@ -1,0 +1,18 @@
+{
+  "name": "npm_singleapp_01",
+  "version": "1.0.0",
+  "description": "npm single app test",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "bin": {
+    "dp-test-01": "index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
